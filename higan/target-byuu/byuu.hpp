@@ -9,6 +9,8 @@ using namespace hiro;
 #include <nall/instance.hpp>
 #include <nall/beat/single/apply.hpp>
 
+#include "lzma/lzma.hpp"
+
 namespace ruby {
   extern Video video;
   extern Audio audio;

@@ -27,7 +27,7 @@ auto Program::load(shared_pointer<Emulator> emulator, string filename) -> bool {
     dialog.setTitle({"Load ", emulator->name, " Game"});
     dialog.setPath(location);
     dialog.setAlignment(presentation);
-    string filters{"*.zip:"};
+    string filters{"*.zip:*.7z:"};
     for(auto& extension : emulator->extensions) {
       filters.append("*.", extension, ":");
     }
@@ -53,6 +53,8 @@ auto Program::load(shared_pointer<Emulator> emulator, string filename) -> bool {
         }
       }
     }
+  } else if(filename.iendsWith(".7z")) {
+	filedata = LZMA::extract(filename); // Loads the first file only for now
   } else {
     filedata = file::read(filename);
   }

@@ -240,7 +240,8 @@ auto VDC::write(uint2 address, uint8 data) -> void {
 }
 
 auto VDC::power() -> void {
-  vram = {};
+//following line is causing GCC crash on mingw64
+//vram = {};
   satb = {};
   irq = {};
   dma = {};
